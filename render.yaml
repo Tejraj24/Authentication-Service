@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: authentication-service
+    runtime: docker
+    plan: starter
+    branch: main
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/auth/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: APP_JWT_SECRET
+        generateValue: true

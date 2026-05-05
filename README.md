@@ -24,14 +24,16 @@ This project now targets Java 8, so it can run with the Java version already ins
 
 ## Deploy on Render
 
-Use the Docker option for this repository.
+Use the Render Blueprint in `render.yaml`.
 
 Recommended settings:
 
 - Root Directory: leave blank
-- Environment: Docker
-- Environment Variable: `APP_JWT_SECRET` with a long random value
-- Optional Environment Variable: `PORT` is provided by Render automatically and should not be overridden
+- Environment: use the repository `render.yaml`
+- Branch: `main`
+- Health Check Path: `/api/auth/health`
+
+The blueprint generates `APP_JWT_SECRET` automatically.
 
 Render will build the Dockerfile, start the app, and route traffic to the port exposed by Spring Boot.
 
