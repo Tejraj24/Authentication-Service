@@ -23,7 +23,7 @@ public class SecurityConfig {
         http.cors();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests()
-            .antMatchers("/api/auth/login", "/api/auth/health").permitAll()
+            .antMatchers("/", "/api/auth/login", "/api/auth/health").permitAll()
             .anyRequest().authenticated();
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
