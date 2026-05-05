@@ -22,6 +22,19 @@ C:\Users\Lenovo\AppData\Local\Programs\apache-maven-3.9.11\bin\mvn.cmd spring-bo
 
 This project now targets Java 8, so it can run with the Java version already installed on this machine.
 
+## Deploy on Render
+
+Use the Docker option for this repository.
+
+Recommended settings:
+
+- Root Directory: leave blank
+- Environment: Docker
+- Environment Variable: `APP_JWT_SECRET` with a long random value
+- Optional Environment Variable: `PORT` is provided by Render automatically and should not be overridden
+
+Render will build the Dockerfile, start the app, and route traffic to the port exposed by Spring Boot.
+
 ## Login example
 
 ```bash

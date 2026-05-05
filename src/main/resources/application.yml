@@ -3,9 +3,9 @@ spring:
     name: authentication-service
 
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 app:
   jwt:
-    secret: authentication-service-demo-secret-key-change-in-production-1234567890
+    secret: ${APP_JWT_SECRET:authentication-service-demo-secret-key-change-in-production-1234567890}
     expiration-minutes: 60
