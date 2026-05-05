@@ -37,6 +37,56 @@ The blueprint generates `APP_JWT_SECRET` automatically.
 
 Render will build the Dockerfile, start the app, and route traffic to the port exposed by Spring Boot.
 
+## Submission Verification
+
+- Deployed Service URL: https://authentication-service-2.onrender.com
+
+### Quick Checks
+
+1. Root status endpoint:
+
+```bash
+GET https://authentication-service-2.onrender.com/
+```
+
+Expected: JSON payload with service status and endpoint hints.
+
+2. Health endpoint:
+
+```bash
+GET https://authentication-service-2.onrender.com/api/auth/health
+```
+
+Expected: `OK`
+
+3. Login endpoint:
+
+```bash
+POST https://authentication-service-2.onrender.com/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "Admin123!"
+}
+```
+
+Expected: JSON response containing `token`, `tokenType`, `username`, `role`, and `expiresInMinutes`.
+
+4. Protected endpoint:
+
+```bash
+GET https://authentication-service-2.onrender.com/api/auth/me
+Authorization: Bearer <token>
+```
+
+Expected: JSON response with authenticated `username` and `role`.
+
+### Demo Credentials
+
+- `admin` / `Admin123!` -> `ADMIN`
+- `user` / `User123!` -> `USER`
+
 ## Login example
 
 ```bash
